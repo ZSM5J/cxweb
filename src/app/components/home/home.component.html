@@ -25,18 +25,14 @@
       <p class="lead">Try CX online</p>
       <form action="/App/Index" method="post">
         <label for="example-select">Load example: </label>
-        <select id="example-select" class="form-control" name="example-select" id="example-select">
-          <option value="hello-world">Hello world</option>
-          <option value="looping">Looping</option>
-          <option value="factorial">Factorial</option>
-          <option value="evolving-a-function">Evolving a function</option>
-          <option value="more">More examples!</option>
+        <select id="example-select" class="form-control" name="example-select" [(ngModel)]="selectedValue"  (change)="changeCode()">
+          <option *ngFor="let c of programms" [selected]="c.name == 'Hello world'" [ngValue]="c">{{c.name}}</option>
         </select>
         <br />
-        <textarea id="code-editor" class="form-control" name="code" rows="6"></textarea>
+        <textarea id="code-editor" class="form-control" name="code" rows="6" [(ngModel)]="code"></textarea>
         <br />
         <button type="submit" class="btn btn-primary">Run</button>
-        <button id="clear-button" class="btn btn-warning">Clear</button>
+        <button id="clear-button" class="btn btn-warning" (click)="clearCode()">Clear</button>
         <br />
         <br />
 

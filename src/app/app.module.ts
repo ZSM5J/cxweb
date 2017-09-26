@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.comonent';
 import { HomeComponent } from './components/home/home.comonent';
 import { TutorialComponent } from './components/tutorial/tutorial.comonent';
+import { ExamplesComponent } from './components/examples/examples.comonent';
 
 import { AppRoutes } from './app.routing';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
@@ -20,7 +21,8 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
     AppComponent,
     HeaderComponent,
     HomeComponent,
-    TutorialComponent
+    TutorialComponent,
+    ExamplesComponent
   ],
   imports: [
     BrowserModule,
