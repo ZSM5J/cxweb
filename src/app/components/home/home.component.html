@@ -31,12 +31,12 @@
         <br />
         <textarea id="code-editor" class="form-control" name="code" rows="6" [(ngModel)]="code"></textarea>
         <br />
-        <button type="submit" class="btn btn-primary">Run</button>
+        <button type="submit" class="btn btn-primary" (click)="runCode()">Run</button>
         <button id="clear-button" class="btn btn-warning" (click)="clearCode()">Clear</button>
         <br />
         <br />
 
-        <div class="alert alert-success"></div>
+        <div class="alert alert-success" *ngIf="showResult"></div>
 
       </form>
     </div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import {Router} from '@angular/router';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-home',
@@ -33,10 +34,10 @@ export class HomeComponent implements OnInit {
     {id: 5, name: 'More examples!', code: ''}
   ];
   public selectedValue = this.programms[0];
-  public code = this.programms[2].code;
+  public code = this.programms[0].code;
+  showResult = false;
 
-
-  constructor( private titleService: Title, private router: Router) {}
+  constructor( private titleService: Title, private router: Router, private api: ApiService) {}
 
   ngOnInit() {
     this.titleService.setTitle('CX Programming Language');
@@ -53,5 +54,16 @@ export class HomeComponent implements OnInit {
 
   clearCode() {
     this.code = '';
+  }
+
+  runCode() {
+    this.api.sendCode("package main\n" +
+      "\n" +
+      "func main () () {\n" +
+      "str.print(\\\"Hello World!\\\")\n" +
+      "}").subscribe((data: any) => {
+      console.log(data);
+    })
+    this.showResult = true;
   }
 }

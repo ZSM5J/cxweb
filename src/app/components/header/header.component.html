@@ -16,9 +16,9 @@
         <li class="dropdown" dropdown>
           <a class="dropdown-toggle hover" dropdownToggle >About <span class="caret"></span></a>
           <ul class="dropdown-menu" *dropdownMenu  aria-labelledby="themes">
-            <li><a href="#">About CX</a></li>
+            <li><a routerLink="about">About CX</a></li>
             <li class="divider"></li>
-            <li><a href="#">FAQ</a></li>
+            <li><a routerLink="faq">FAQ</a></li>
             <li><a href="https://www.skycoin.net/">Skycoin</a></li>
           </ul>
         </li>
@@ -29,7 +29,7 @@
             <li class="divider"></li>
             <li><a routerLink="tutorial">Tutorial and Documentation</a></li>
             <li><a routerLink="examples">Examples</a></li>
-            <li><a href="/public/pdf/cx.pdf">Specification</a></li>
+            <li><a href="/assets/cx.pdf">Specification</a></li>
           </ul>
         </li>
         <li>
@@ -38,7 +38,7 @@
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#" target="_blank">CX Playground</a></li>
+        <li><a [routerLink]="['']">CX Playground</a></li>
         <li><a href="https://github.com/skycoin/cx" target="_blank">Github Repository</a></li>
       </ul>
 
