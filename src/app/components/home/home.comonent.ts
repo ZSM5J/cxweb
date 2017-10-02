@@ -10,7 +10,7 @@ import { ApiService } from '../../services/api.service';
 })
 export class HomeComponent implements OnInit {
   public programms = [
-    {id: 1, name: 'Hello world', code: 'package main \n\n func main () (out str){\n \tprintStr("Hello World!")\n}'},
+    {id: 1, name: 'Hello world', code: 'package main \n\n func main () (){\n \tstr.print("Hello World!")\n}'},
     {id: 2, name: 'Looping', code: 'package main\n' +
     '\n' +
     'func main () (out i32) {\n' +
@@ -36,6 +36,7 @@ export class HomeComponent implements OnInit {
   public selectedValue = this.programms[0];
   public code = this.programms[0].code;
   showResult = false;
+  result = 'waiting...';
 
   constructor( private titleService: Title, private router: Router, private api: ApiService) {}
 
@@ -57,13 +58,16 @@ export class HomeComponent implements OnInit {
   }
 
   runCode() {
-    this.api.sendCode("package main\n" +
-      "\n" +
-      "func main () () {\n" +
-      "str.print(\\\"Hello World!\\\")\n" +
-      "}").subscribe((data: any) => {
-      console.log(data);
-    })
-    this.showResult = true;
+    console.log(this.code);
+    let str = this.code;
+    str = str.replace(new RegExp('\n', 'g') , ' ');
+    str = str.replace(new RegExp('\t', 'g') , ' ');
+    str = str.replace(new RegExp('"', 'g') , '\\"');
+    console.log(str);
+    this.api.sendCode(str).subscribe((data: any) => {
+       this.result = data._body;
+       this.showResult = true;
+     });
+
   }
 }
